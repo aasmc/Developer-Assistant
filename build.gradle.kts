@@ -1,11 +1,10 @@
 plugins {
     java
     id("org.springframework.boot") version ("2.1.1.RELEASE") apply (false)
-    id("io.spring.dependency-management") version "1.1.0"
 }
 
 allprojects {
-    group = "ru.aasmc"
+    group = "org.spring.boot.test.curse"
     version = "1.0"
 
     repositories {
@@ -33,7 +32,7 @@ subprojects {
             platform("org.junit:junit-bom:5.3.2"),
             "org.junit.platform:junit-platform-launcher",
             "org.junit.jupiter:junit-jupiter-engine"
-        ).onEach(::testImplementation)
+        ).onEach(::testRuntimeOnly)
 
         listOf(
             "org.junit.jupiter:junit-jupiter-api",

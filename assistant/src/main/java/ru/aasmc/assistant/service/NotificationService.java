@@ -11,6 +11,8 @@ import java.time.format.FormatStyle;
 import java.util.Deque;
 import java.util.concurrent.ConcurrentLinkedDeque;
 
+import static ru.aasmc.assistant.controller.AnswerSender.sendAnswer;
+
 @Service
 @RequiredArgsConstructor
 public class NotificationService {
@@ -35,6 +37,7 @@ public class NotificationService {
                 e.printStackTrace();
             }
         }
+        emitters.forEach(sseEmitter -> sendAnswer(answer).to(sseEmitter));
     }
 
     private void setDateIfNotExists(Answer answer) {

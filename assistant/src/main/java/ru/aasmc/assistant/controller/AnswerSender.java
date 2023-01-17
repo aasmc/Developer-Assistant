@@ -1,19 +1,20 @@
 package ru.aasmc.assistant.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.MediaType;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 import ru.aasmc.assistant.domain.Answer;
-import org.springframework.http.MediaType;
 
 import java.io.IOException;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON;
+import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8;
 
 
 @Slf4j
 public class AnswerSender {
     private Answer answer;
-    private MediaType mediaType = MediaType.APPLICATION_JSON_UTF8;
+    private MediaType mediaType = APPLICATION_JSON_UTF8;
 
     private AnswerSender(Answer answer) {
         this.answer = answer;
@@ -35,4 +36,5 @@ public class AnswerSender {
             log.error("Error", e);
         }
     }
+
 }

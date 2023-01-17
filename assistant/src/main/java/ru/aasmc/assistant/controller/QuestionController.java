@@ -3,6 +3,7 @@ package ru.aasmc.assistant.controller;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import ru.aasmc.assistant.domain.Answer;
@@ -15,11 +16,11 @@ import ru.aasmc.assistant.service.resolvers.question.QuestionTypeResolver;
 @RestController
 @RequiredArgsConstructor
 public class QuestionController {
-
     private final NotificationService notificationService;
     private final AssistantServiceJavaGuruBackend assistantService;
     private final QuestionTypeResolver questionTypeResolver;
 
+    @PostMapping("/question")
     public ResponseEntity handleQuestion(@RequestBody Question question) {
         question.setQuestionType(questionTypeResolver.resolveType(question));
 
